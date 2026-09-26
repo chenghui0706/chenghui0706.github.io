@@ -78,6 +78,7 @@ class CrossyKluangGame {
         this.scene.add(this.sunLight);
 
         window.addEventListener("resize", () => this.onResize());
+        new ResizeObserver(() => this.onResize()).observe(this.container);
     }
 
     onResize() {
@@ -219,6 +220,7 @@ class CrossyKluangGame {
             }
 
             if (dx !== 0 || dz !== 0) {
+                e.preventDefault();
                 this.requestHop(dx, dz, facing);
             }
         });
@@ -242,8 +244,7 @@ class CrossyKluangGame {
                 e.preventDefault();
                 this.requestHop(btn.dx, btn.dz, btn.facing);
             };
-            el.addEventListener("mousedown", handler);
-            el.addEventListener("touchstart", handler);
+            el.addEventListener("pointerdown", handler);
         });
     }
 
