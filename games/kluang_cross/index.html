@@ -59,6 +59,24 @@
       <button id="diff-easy-btn" class="diff-btn">简单</button>
       <button id="diff-hard-btn" class="diff-btn">困难</button>
     </div>
+<div id="virtual-dpad" style="position: absolute; bottom: 30px; right: 30px; z-index: 1000; display: grid; grid-template-columns: 50px 50px 50px; grid-template-rows: 50px 50px; gap: 5px; user-select: none;">
+    <!-- 上 -->
+    <div style="grid-column: 2; grid-row: 1;">
+        <button id="btn-up" style="width: 100%; height: 100%; font-size: 24px; border-radius: 8px; background: rgba(0,0,0,0.6); color: white; border: 2px solid #555; cursor: pointer; touch-action: manipulation;">⬆️</button>
+    </div>
+    <!-- 左 -->
+    <div style="grid-column: 1; grid-row: 2;">
+        <button id="btn-left" style="width: 100%; height: 100%; font-size: 24px; border-radius: 8px; background: rgba(0,0,0,0.6); color: white; border: 2px solid #555; cursor: pointer; touch-action: manipulation;">⬅️</button>
+    </div>
+    <!-- 下 -->
+    <div style="grid-column: 2; grid-row: 2;">
+        <button id="btn-down" style="width: 100%; height: 100%; font-size: 24px; border-radius: 8px; background: rgba(0,0,0,0.6); color: white; border: 2px solid #555; cursor: pointer; touch-action: manipulation;">⬇️</button>
+    </div>
+    <!-- 右 -->
+    <div style="grid-column: 3; grid-row: 2;">
+        <button id="btn-right" style="width: 100%; height: 100%; font-size: 24px; border-radius: 8px; background: rgba(0,0,0,0.6); color: white; border: 2px solid #555; cursor: pointer; touch-action: manipulation;">➡️</button>
+    </div>
+</div>
 
         <!-- 受击可爱血条扣减动画挂件 -->
         <div id="hp-bar-widget" class="hp-bar-widget">

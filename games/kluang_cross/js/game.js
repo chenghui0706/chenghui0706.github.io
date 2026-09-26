@@ -228,6 +228,23 @@ class CrossyKluangGame {
         document.getElementById("diff-hard-btn")?.addEventListener("click", () => this.setDifficulty("hard"));
 
         document.getElementById("restart-btn")?.addEventListener("click", () => this.restartGame());
+        // Virtual D-pad button listeners for touch/mouse control
+        const dpadButtons = [
+            { id: "btn-up", dx: 0, dz: -2.0, facing: Math.PI },
+            { id: "btn-down", dx: 0, dz: 2.0, facing: 0 },
+            { id: "btn-left", dx: -1.8, dz: 0, facing: -Math.PI / 2 },
+            { id: "btn-right", dx: 1.8, dz: 0, facing: Math.PI / 2 }
+        ];
+        dpadButtons.forEach(btn => {
+            const el = document.getElementById(btn.id);
+            if (!el) return;
+            const handler = (e) => {
+                e.preventDefault();
+                this.requestHop(btn.dx, btn.dz, btn.facing);
+            };
+            el.addEventListener("mousedown", handler);
+            el.addEventListener("touchstart", handler);
+        });
     }
 
     // 设置游戏难度
