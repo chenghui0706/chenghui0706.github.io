@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHENG HUI | 中学物理教师</title>
+    <style>
+        /* 日式极简与浮世绘配色体系 */
+        :root {
+            --washi-bg: #F5F1E7; /* 和纸米色 */
+            --ink-text: #2A363B; /* 墨黑色 */
+            --indigo: #2D4059;   /* 靛青 */
+            --vermilion: #D05B43; /* 朱红 */
+            --pine: #5C7A6D;     /* 松绿 */
+        }
+
+        * { box-sizing: border-box; }
+        
+        body {
+            font-family: "Noto Serif SC", "Songti SC", "SimSun", serif; /* 采用衬线字体增加传统质感 */
+            background-color: var(--washi-bg);
+            color: var(--ink-text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e0dcd0' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); /* 极微弱的和风纹理底图 */
+        }
+
+        /* 顶部导航栏 */
+        header {
+            background-color: rgba(245, 241, 231, 0.95);
+            border-bottom: 2px solid var(--indigo);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--ink-text);
+            font-family: inherit;
+            font-size: 1.1rem;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-btn:hover { color: var(--vermilion); }
+        
+        .nav-btn.active {
+            color: var(--vermilion);
+            border-bottom: 2px solid var(--vermilion);
+            font-weight: bold;
+        }
+
+        /* 页面内容容器 */
+        .page-content {
+            display: none; /* 默认隐藏所有页面 */
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page-content.active { display: block; } /* 仅显示带有 active 类的页面 */
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 统一标题样式 */
+        h1, h2, h3 { color: var(--indigo); font-weight: normal; margin-top: 0; }
+        .section-title {
+            border-left: 4px solid var(--vermilion);
+            padding-left: 12px;
+            margin-bottom: 25px;
+        }
+
+        /* 卡片设计（占位框） */
+        .card {
+            background: #fff;
+            border: 1px solid #e0dcd0;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.03);
+        }
+
+        /* 游戏区域专属 */
+        .game-wrapper {
+            position: relative;
+            background: #000;
+            padding-top: 56.25%; /* 16:9 比例 */
+            border: 3px solid var(--indigo);
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+        .game-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%; border: none;
+        }
+        .fullscreen-btn {
+            display: inline-block;
+            margin-bottom: 15px;
+            background: var(--pine);
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            font-family: inherit;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .fullscreen-btn:hover { background: var(--indigo); }
+
+        footer { text-align: center; margin-top: 60px; padding: 20px; color: #888; font-size: 0.9rem; border-top: 1px solid #e0dcd0; }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部固定导航栏 -->
+    <header>
+        <div class="nav-container">
+            <!-- onclick="openTab(id, this)" 用于触发 JS 切换页面 -->
+            <button class="nav-btn active" onclick="openTab('page-home', this)">首页 (日常)</button>
+            <button class="nav-btn" onclick="openTab('page-games', this)">教学线上游戏ing</button>
+            <button class="nav-btn" onclick="openTab('page-reviews', this)">评论与视频</button>
+            <button class="nav-btn" onclick="openTab('page-comments', this)">网民留言</button>
+        </div>
+    </header>
+
+    <!-- ==================== 第一页：首页 ==================== -->
+    <div id="page-home" class="page-content active">
+        <h2 class="section-title">CHENG HUI | 中学物理教师</h2>
+        
+        <div class="card">
+            <h3>置顶：个人简介</h3>
+            <p>（此处预留空白，未来可填入详细履历、教育理念等内容）</p>
+            <br><br>
+        </div>
+
+        <h3 class="section-title" style="border-color: var(--pine);">日常碎片 (IG / FB / IMDb)</h3>
+        <div class="card">
+            <p>📷 <strong>Instagram 摘录</strong></p>
+            <p>（未来可在此处直接嵌入 Instagram 的帖子代码）</p>
+        </div>
+        <div class="card">
+            <p>🎬 <strong>IMDb / 观影记录</strong></p>
+            <p>（未来可记录最近看过的电影或生活随笔）</p>
+        </div>
+    </div>
+
+    <!-- ==================== 第二页：教学游戏 ==================== -->
+    <div id="page-games" class="page-content">
+        <h2 class="section-title">教学线上游戏ing</h2>
+        <p>寓教于乐。在此体验物理机制与像素方块的碰撞。</p>
+        
+        <button class="fullscreen-btn" onclick="enterFullscreen()">⛶ 点击进入全屏沉浸模式</button>
+        
+        <!-- 游戏 Iframe 容器 -->
+        <div class="game-wrapper" id="game-container">
+            <iframe id="gameFrame" src="./games/kluang_cross/index.html" title="居銮群侠传"></iframe>
+        </div>
+    </div>
+
+    <!-- ==================== 第三页：时政影视 ==================== -->
+    <div id="page-reviews" class="page-content">
+        <h2 class="section-title">时政、影视评论与视频</h2>
+        
+        <div class="card">
+            <h3>📰 网络文章与评论</h3>
+            <p>（预留区：此处可放置发布在主流媒体或社交平台的文章链接与摘要）</p>
+        </div>
+
+        <div class="card">
+            <h3>🎥 视频内容</h3>
+            <p>（预留区：可嵌入 YouTube 或 IG 的视频框）</p>
+        </div>
+    </div>
+
+    <!-- ==================== 第四页：留言板 ==================== -->
+    <div id="page-comments" class="page-content">
+        <h2 class="section-title">网民留言</h2>
+        
+        <div class="card">
+            <p>欢迎交流教学心得或对文章发表看法。</p>
+            <hr style="border:0; border-top: 1px dashed #ccc; margin: 20px 0;">
+            <p style="color: #888;">（系统提示：静态网页暂无法直接存储留言。建议后续在此嵌入 <strong>Giscus</strong> (基于 GitHub Discussions) 或 <strong>Disqus</strong> 留言板插件，无需后端的免费留言方案。）</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 CHENG HUI. 浮世流风，教学相长.</p>
+    </footer>
+
+    <!-- 控制页面切换与全屏的 JavaScript -->
+    <script>
+        // 1. 标签页切换逻辑
+        function openTab(tabId, btnElement) {
+            // 隐藏所有页面
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // 取消所有按钮的高亮
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // 显示选中的页面，高亮对应的按钮
+            document.getElementById(tabId).classList.add('active');
+            btnElement.classList.add('active');
+        }
+
+        // 2. 游戏全屏逻辑
+        function enterFullscreen() {
+            const gameBox = document.getElementById("game-container");
+            if (gameBox.requestFullscreen) {
+                gameBox.requestFullscreen();
+            } else if (gameBox.mozRequestFullScreen) { /* Firefox */
+                gameBox.mozRequestFullScreen();
+            } else if (gameBox.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+                gameBox.webkitRequestFullscreen();
+            } else if (gameBox.msRequestFullscreen) { /* IE/Edge */
+                gameBox.msRequestFullscreen();
+            }
+        }
+    </script>
+</body>
+</html>
