@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHENG HUI | 物理教学 & 游戏化学习研究</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Arial", sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f4f6f9; color: #333; }
+        .container { max-width: 960px; margin: 0 auto; background: #fff; padding: 35px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        header { border-bottom: 2px solid #2c3e50; padding-bottom: 15px; margin-bottom: 25px; }
+        h1 { margin: 0; color: #2c3e50; font-size: 2.2rem; }
+        .tagline { color: #666; font-size: 1.1rem; margin-top: 5px; }
+        
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        .card { background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #3498db; }
+        .card h3 { margin-top: 0; color: #2c3e50; }
+        ul { padding-left: 20px; margin-bottom: 0; }
+        li { margin-bottom: 8px; }
+        
+        /* 游戏区域样式更新 */
+        .game-section { margin-top: 35px; background: #1e1e24; color: #fff; padding: 25px; border-radius: 12px; }
+        .game-section h2 { color: #4fc3f7; margin-top: 0; border-bottom: 1px solid #444; padding-bottom: 10px; }
+        
+        /* 游戏切换菜单 */
+        .game-nav { margin: 15px 0; display: flex; gap: 10px; flex-wrap: wrap; }
+        .game-nav button { background: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 1rem; transition: background 0.3s; }
+        .game-nav button:hover { background: #2980b9; }
+        .game-nav button.active { background: #e67e22; }
+
+        .iframe-wrapper { position: relative; width: 100%; height: 620px; border-radius: 8px; overflow: hidden; background: #000; box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+        iframe { width: 100%; height: 100%; border: none; }
+        footer { text-align: center; margin-top: 40px; color: #888; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>CHENG HUI</h1>
+            <div class="tagline">中学物理教师 | 教育硕士在读 | 游戏化教学设计与评论撰稿人</div>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <h3>👨‍🏫 教学与研究方向</h3>
+                <ul>
+                    <li><strong>物理教学创新：</strong> 高中物理概念可视化与游戏化学习（Gamified Learning）设计</li>
+                    <li><strong>数字教育工具：</strong> 探索互动式网页小游戏与异世界 RPG 在物理复习中的应用</li>
+                    <li><strong>学术研究：</strong> 认知发展理论与教育测量工具在物理教学中的实证探讨</li>
+                </ul>
+            </div>
+            <div class="card" style="border-left-color: #e67e22;">
+                <h3>✍️ 创作与多元探索</h3>
+                <ul>
+                    <li><strong>时政与影视评论：</strong> 关注东南亚与马来西亚社会动态、教育议题及电影评论</li>
+                    <li><strong>讽刺漫画与视觉创作：</strong> 结合社会观察进行视觉幽默创作</li>
+                    <li><strong>教学互动软件：</strong> 《居銮群侠传》等教育互动小游戏独立开发</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 游戏在线体验区 -->
+        <div class="game-section">
+            <h2>🎮 在线体验：物理与教学互动游戏库</h2>
+            <p>点击下方按钮，切换游玩不同的教学测试模块。这些模块未来将整合为一个完整的教学 RPG 游戏。</p>
+            
+            <!-- 游戏切换按钮 -->
+            <div class="game-nav">
+                <!-- 注意：这里的 onclick 路径要和你的文件夹路径完全对应 -->
+                <button onclick="switchGame('./games/kluang_cross/index.html', this)" class="active">居銮群侠传 (过马路)</button>
+                <button onclick="switchGame('./games/physics_rpg/index.html', this)">高三电磁学 RPG (开发中)</button>
+                <button onclick="switchGame('./games/final_masterpiece/index.html', this)">完整版大游戏 (敬请期待)</button>
+            </div>
+            
+            <div class="iframe-wrapper">
+                <!-- 默认显示过马路游戏 -->
+                <iframe id="gameFrame" src="./games/kluang_cross/index.html" title="游戏展示"></iframe>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 CHENG HUI. Powered by GitHub Pages.</p>
+        </footer>
+    </div>
+
+    <!-- 简单的 JavaScript 用于切换 iframe 中的游戏 -->
+    <script>
+        function switchGame(gameUrl, buttonElement) {
+            // 切换游戏画面
+            document.getElementById('gameFrame').src = gameUrl;
+            
+            // 改变按钮颜色（高亮当前选中的游戏）
+            let buttons = document.querySelectorAll('.game-nav button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            buttonElement.classList.add('active');
+        }
+    </script>
+</body>
+</html>

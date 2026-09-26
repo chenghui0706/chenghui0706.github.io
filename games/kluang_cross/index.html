@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>居銮群侠传 · 3D过马路小游戏 | Crossy Road 风格 3D 网页游戏</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 顶部状态栏 HUD -->
+    <header class="game-header">
+        <div class="brand-section">
+            <h1 class="game-title">居銮群侠传</h1>
+            <span class="badge-mode">3D 像素方块版 · 过马路小游戏</span>
+        </div>
+
+        <div class="status-section">
+            <div class="stat-pill">📍 当前位置: <span id="hud-lane-status" style="color: #2ecc71;">起点安全人行道</span></div>
+            <button id="mute-btn" class="btn-mute">🔊 音效开</button>
+        </div>
+    </header>
+
+    <!-- 3D 游戏主视口容器 -->
+    <main class="game-viewport-container">
+        <!-- Three.js 3D 渲染挂载节点 -->
+        <div id="game-container"></div>
+
+        <!-- 左上角主线目标提示 -->
+        <div class="objective-tag">
+            <div class="objective-title">🎯 通关目标</div>
+            <div class="objective-sub">穿过 4 条车道抵达成校门！每过一次手中多抱一本书，移速逐渐变慢！</div>
+        </div>
+
+        <!-- 右上角固定积分表与书本负重仪表盘 (Scoreboard) -->
+        <div class="scoreboard-card">
+            <div class="scoreboard-title">
+                <span>🏆 实时过马路积分表</span>
+                <span>CHHS</span>
+            </div>
+            <div class="scoreboard-row">
+                <span>成功过马路:</span>
+                <span id="score-counter" class="scoreboard-val">0</span> 次
+            </div>
+            <div class="scoreboard-row">
+                <span>手持书本负重:</span>
+                <span id="book-counter" class="scoreboard-val">0 / 10 本</span>
+            </div>
+            <div class="scoreboard-row">
+                <span>移速敏捷度:</span>
+                <span id="speed-indicator" class="scoreboard-val" style="color: #2ecc71;">100%</span>
+            </div>
+            <div id="tier-indicator" class="scoreboard-tier">0-2分：普通车流</div>
+        </div>
+
+    <!-- 右下角难度切换组件 -->
+    <div id="difficulty-selector" class="difficulty-switch-widget">
+      <span class="diff-title">难度切换:</span>
+      <button id="diff-easy-btn" class="diff-btn">简单</button>
+      <button id="diff-hard-btn" class="diff-btn">困难</button>
+    </div>
+
+        <!-- 受击可爱血条扣减动画挂件 -->
+        <div id="hp-bar-widget" class="hp-bar-widget">
+            <div class="hp-heart">💔</div>
+            <div class="hp-track">
+                <div id="hp-fill" class="hp-fill"></div>
+            </div>
+        </div>
+
+        <!-- 成功通关 1 次浮动 Toast -->
+        <div id="pass-toast" class="pass-toast">🎉 成功抵校！积分 +1，手上又多了 1 本书！</div>
+
+        <!-- 搞笑死亡与同学升天堂结算弹窗 -->
+        <div id="gameover-modal" class="modal-overlay">
+            <div class="modal-card gameover-card">
+                <div class="modal-icon">😇</div>
+                <h2 class="modal-title">【同学已升天堂……】</h2>
+                
+                <div class="modal-stats-box">
+                    <div>
+                        <div class="stat-item-label">成功过马路</div>
+                        <div class="stat-item-value"><span id="final-score">0</span> <span style="font-size:13px; color:#fff;">次</span></div>
+                    </div>
+                    <div>
+                        <div class="stat-item-label">捧书负重</div>
+                        <div class="stat-item-value"><span id="final-books">0</span> <span style="font-size:13px; color:#fff;">本</span></div>
+                    </div>
+                </div>
+
+                <p id="funny-comment" class="modal-desc">
+                    车流湍急，虽然你把车辆狠狠弹飞了，但自己也羽化飞仙升入云霄……
+                </p>
+                <button id="restart-btn" class="btn-action">重新开始</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部操作快捷指南 -->
+    <footer class="game-footer-help">
+        <div>
+            跳跃移动：<span class="key-badge">W</span><span class="key-badge">A</span><span class="key-badge">S</span><span class="key-badge">D</span> 或 <span class="key-badge">↑</span><span class="key-badge">←</span><span class="key-badge">↓</span><span class="key-badge">→</span>
+            &nbsp;|&nbsp;
+            机制：书本越多走得越慢，小心 3 车道巨型大恐龙和风骚斜跨小恐龙！
+        </div>
+        <div>
+            视角：3D Isometric 正交俯视 &nbsp;|&nbsp; 居銮中华中学校门口
+        </div>
+    </footer>
+
+    <!-- 本地离线 3D 引擎与各模块脚本 -->
+    <script src="js/three.min.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/models.js"></script>
+    <script src="js/traffic.js"></script>
+    <script src="js/game.js"></script>
+    <script>
+        // 桌面端 EXE 心跳保活 (当独立双击 exe 运行时保持后台服务活跃)
+        setInterval(() => {
+            fetch('/api/heartbeat').catch(() => {});
+        }, 1500);
+    </script>
+</body>
+</html>
