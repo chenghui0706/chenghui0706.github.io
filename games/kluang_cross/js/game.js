@@ -197,6 +197,19 @@ class CrossyKluangGame {
     }
 
     setupInputs() {
+        // Mobile browsers allow Web Audio only after a direct user gesture.
+        document.addEventListener("pointerdown", () => window.sound?.ensureContext(), { capture: true });
+        const muteButton = document.getElementById("mute-btn");
+        muteButton?.addEventListener("click", async () => {
+            if (!window.sound) return;
+            const muted = window.sound.toggleMute();
+            muteButton.textContent = muted ? "🔇 音效关" : "🔊 音效开";
+            muteButton.setAttribute("aria-pressed", String(muted));
+            if (!muted) {
+                await window.sound.ensureContext();
+                window.sound.playHop(); // Audible confirmation at the new volume.
+            }
+        });
         window.addEventListener("keydown", (e) => {
             if (this.gameState !== "PLAYING") return;
             if (window.sound) window.sound.ensureContext();

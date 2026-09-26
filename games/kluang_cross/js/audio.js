@@ -9,6 +9,7 @@ class SoundSystem {
         this.muted = false;
         this.isInitialized = false;
         this.lastHopTime = 0;
+        this.masterGain = null;
     }
 
     init() {
@@ -16,6 +17,9 @@ class SoundSystem {
         try {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
             this.ctx = new AudioContext();
+            this.masterGain = this.ctx.createGain();
+            this.masterGain.gain.value = 1.35;
+            this.masterGain.connect(this.ctx.destination);
             this.isInitialized = true;
         } catch (e) {
             console.warn("Web Audio API not supported", e);
@@ -25,8 +29,9 @@ class SoundSystem {
     ensureContext() {
         if (!this.ctx) this.init();
         if (this.ctx && this.ctx.state === 'suspended') {
-            this.ctx.resume();
+            return this.ctx.resume().catch(e => console.warn("Audio could not start", e));
         }
+        return Promise.resolve();
     }
 
     toggleMute() {
@@ -52,11 +57,11 @@ class SoundSystem {
         osc.frequency.setValueAtTime(startFreq, now);
         osc.frequency.exponentialRampToValueAtTime(endFreq, now + 0.12);
 
-        gain.gain.setValueAtTime(0.09, now);
+        gain.gain.setValueAtTime(0.16, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
 
         osc.connect(gain);
-        gain.connect(this.ctx.destination);
+        gain.connect(this.masterGain);
 
         osc.start(now);
         osc.stop(now + 0.14);
@@ -77,7 +82,7 @@ class SoundSystem {
         thudGain.gain.setValueAtTime(0.25, now);
         thudGain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
         thudOsc.connect(thudGain);
-        thudGain.connect(this.ctx.destination);
+        thudGain.connect(this.masterGain);
         thudOsc.start(now);
         thudOsc.stop(now + 0.2);
 
@@ -89,7 +94,7 @@ class SoundSystem {
         flyGain.gain.setValueAtTime(0.16, now + 0.05);
         flyGain.gain.exponentialRampToValueAtTime(0.001, now + 0.65);
         flyOsc.connect(flyGain);
-        flyGain.connect(this.ctx.destination);
+        flyGain.connect(this.masterGain);
         flyOsc.start(now + 0.05);
         flyOsc.stop(now + 0.65);
     }
@@ -111,7 +116,7 @@ class SoundSystem {
             gain.gain.setValueAtTime(0.08, t);
             gain.gain.exponentialRampToValueAtTime(0.001, t + 0.08);
             osc.connect(gain);
-            gain.connect(this.ctx.destination);
+            gain.connect(this.masterGain);
             osc.start(t);
             osc.stop(t + 0.08);
         });
@@ -137,7 +142,7 @@ class SoundSystem {
             gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.9);
 
             osc.connect(gain);
-            gain.connect(this.ctx.destination);
+            gain.connect(this.masterGain);
 
             osc.start(t);
             osc.stop(t + 0.9);
@@ -162,7 +167,7 @@ class SoundSystem {
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
 
         osc.connect(gain);
-        gain.connect(this.ctx.destination);
+        gain.connect(this.masterGain);
 
         osc.start(now);
         osc.stop(now + 0.3);
@@ -187,7 +192,7 @@ class SoundSystem {
             gain.gain.exponentialRampToValueAtTime(0.001, t + 0.2);
 
             osc.connect(gain);
-            gain.connect(this.ctx.destination);
+            gain.connect(this.masterGain);
 
             osc.start(t);
             osc.stop(t + 0.2);
@@ -213,7 +218,7 @@ class SoundSystem {
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
 
         osc.connect(gain);
-        gain.connect(this.ctx.destination);
+        gain.connect(this.masterGain);
 
         osc.start(now);
         osc.stop(now + 0.22);
