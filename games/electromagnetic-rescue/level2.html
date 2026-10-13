@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>电磁救援 · 第 2 关：闭合电路</title>
+  <script src="./level-access.js" data-level="2"></script>
+  <link rel="stylesheet" href="./level-access.css" />
+  <script type="module" crossorigin src="./assets/preferences-B44LDLeE.js"></script>
+  <script type="module" crossorigin src="./assets/reward-DEPHH34j.js"></script>
+  <script type="module" crossorigin src="./assets/formula-challenges-DDg6NSZf.js"></script>
+  <script type="module" crossorigin src="./assets/drive-queue-DfiqEgVt.js"></script>
+  <script type="module" crossorigin src="./assets/timed-locks-DvUjIPCF.js"></script>
+  <script type="module" crossorigin src="./assets/level2-CkpscuFl.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/reward-CptLuSUM.css">
+  <link rel="stylesheet" crossorigin href="./assets/formula-challenges-1SvkI558.css">
+  <link rel="stylesheet" crossorigin href="./assets/level2-OkRwjGYu.css">
+</head>
+<body class="level-two">
+  <main class="app">
+    <header class="header">
+      <div class="brand"><span class="eyebrow">物理互动实验 · LEVEL 02</span><h1>电磁救援</h1><p>第 2 关 · 闭合电路</p></div>
+      <div class="header-actions"><div class="stat time-stat" id="time-stat"><span>剩余时间</span><strong id="time">01:00</strong></div><div class="stat violet"><span>得分／目标</span><strong id="score-top">0/4000</strong><span class="score-track" role="progressbar" aria-label="得分进度" aria-valuemin="0" aria-valuemax="4000" aria-valuenow="0" id="score-track"><i id="score-fill"></i></span></div><div class="stat multiplier-stat" id="multiplier-stat"><span>当前倍率</span><strong id="multiplier">×1</strong><small id="multiplier-time">—</small></div><div class="stat lock-stat"><span>已解锁</span><strong id="locks">0</strong></div><button id="challenge-pause" class="icon-button" aria-label="暂停挑战" title="暂停挑战">⏸<small>暂停</small></button><button id="mute" class="icon-button" aria-label="静音" title="静音">♫<small>音效</small></button><button id="fullscreen" class="icon-button" aria-label="切换全屏" title="切换全屏">⛶<small>全屏</small></button><button id="restart" class="icon-button" aria-label="重新开始" title="重新开始">↻<small>重开</small></button></div>
+    </header>
+
+    <section class="play-area">
+      <section class="experiment level2-experiment" aria-label="磁铁、线圈与闭合电路实验">
+        <div class="level2-stage-head"><span id="mode-chip" class="mode-chip">发现故障</span><span class="stage-subtitle">电机推动磁铁 · 两表看同一次运动</span></div>
+        <div class="scene-wrap" id="scene-wrap"><div class="scene-fallback" id="scene-fallback" hidden>此浏览器无法显示 3D 场景，请开启 WebGL。</div></div><svg id="apparatus-leads" class="apparatus-leads" aria-hidden="true"><path id="apparatus-lead-a"/><path id="apparatus-lead-b"/><circle id="apparatus-terminal-a" r="5"/><circle id="apparatus-terminal-b" r="5"/><text id="apparatus-label-a">A</text><text id="apparatus-label-b">B</text></svg><div id="combo-reaction" class="combo-reaction" aria-live="polite" hidden></div>
+        <div class="circuit-panel" id="circuit-panel" aria-label="线圈、电压表并联支路及开关电阻电流表串联支路">
+          <div class="circuit-heading"><strong>装置接线图</strong><span>红端 A · 蓝端 B · R、r 固定</span></div>
+          <div class="circuit-graphic">
+            <svg id="circuit-svg" viewBox="0 0 520 300" role="img" aria-label="线圈两端并联电压表，另一支路由开关、电阻和电流表串联组成">
+              <defs><filter id="wire-shadow"><feDropShadow dx="0" dy="2" stdDeviation="1" flood-opacity=".1"/></filter></defs>
+              <g class="wires" filter="url(#wire-shadow)">
+                <path d="M65 53 H420 M65 250 H420 M65 53 V87 M65 214 V250"/>
+                <path d="M240 53 V108 M240 192 V250"/>
+                <path d="M420 53 V70 M420 116 V133 M420 169 V178 M420 230 V250"/>
+              </g>
+              <circle class="node red-node" cx="65" cy="53" r="7"/><circle class="node blue-node" cx="65" cy="250" r="7"/>
+              <text class="node-label" x="32" y="46">A</text><text class="node-label" x="32" y="268">B</text>
+              <path class="coil-wire" d="M65 87 C42 93 42 108 65 115 C88 122 88 137 65 144 C42 151 42 166 65 173 C88 180 88 195 65 202 C42 207 42 214 65 214"/>
+              <text class="internal-resistance" x="91" y="156">r</text>
+              <text class="component-label" x="65" y="277" text-anchor="middle">线圈</text>
+              <circle class="voltmeter-face" cx="240" cy="150" r="42"/>
+              <path class="meter-scale" d="M216 148 Q240 112 264 148"/>
+              <line id="voltage-needle" class="voltage-needle" x1="240" y1="165" x2="240" y2="130"/>
+              <circle class="meter-center" cx="240" cy="165" r="5"/>
+              <text class="meter-letter voltage-letter" x="240" y="182" text-anchor="middle">V</text>
+              <text class="component-label" x="240" y="278" text-anchor="middle">并联电压表</text>
+              <circle class="switch-contact" cx="420" cy="70" r="5"/><circle class="switch-contact" cx="420" cy="116" r="5"/>
+              <path id="switch-open-blade" class="switch-blade" d="M420 70 L447 90"/><path id="switch-closed-blade" class="switch-blade" d="M420 70 V116" hidden/>
+              <text class="component-label" x="478" y="102">开关</text>
+              <rect class="resistor" x="400" y="133" width="40" height="36" rx="3"/><text class="resistor-text" x="420" y="158" text-anchor="middle">R</text>
+              <circle class="ammeter-face" cx="420" cy="204" r="26"/>
+              <path class="meter-scale" d="M405 203 Q420 182 435 203"/>
+              <line id="current-needle" class="current-needle" x1="420" y1="212" x2="420" y2="190"/>
+              <circle class="meter-center" cx="420" cy="212" r="3"/>
+              <text class="meter-letter current-letter" x="420" y="225" text-anchor="middle">A</text>
+              <text class="component-label" x="461" y="209">电流表</text>
+              <g id="current-arrows" class="current-arrows" hidden><path id="arrow-top"/><path id="arrow-side"/><path id="arrow-bottom"/></g>
+              <text id="voltage-value" class="readout voltage-readout" x="192" y="103">V 0.00</text>
+              <text id="current-value" class="readout current-readout" x="382" y="288">I 0.00</text>
+            </svg>
+            <button id="switch-control" class="switch-hit" type="button" aria-label="开关：断开" title="点击开合开关"><span class="sr-only">开合开关</span></button>
+          </div>
+          <div class="circuit-legend"><span><i class="legend-mark voltage-mark">V</i>路端电压 V · 归一化</span><span><i class="legend-mark current-mark">A</i>电流 I · 归一化</span><span id="emf-readout">感应电动势 ε 0.00 · 归一化</span></div>
+        </div>
+        <div class="stage-message" id="stage-message" aria-live="polite">先通过一次有效三消，让磁铁运动，观察两只表。</div>
+        <div class="stage-actions"><button id="reobserve" class="control-button" hidden>再观察一次</button><button id="continue-lesson" class="control-button" hidden>继续</button><button id="start-challenge" class="control-button" hidden>开始挑战</button><button id="drive-free" class="control-button" hidden>驱动磁铁</button></div>
+        <div class="scene-controls"><button id="pause" class="control-button" disabled>⏸ 暂停磁铁</button><div class="secondary-actions"><button id="apparatus-info" class="text-button">查看装置</button><button id="principle" class="text-button">原理说明</button><button id="replay-guide" class="text-button" hidden>再看原理</button></div></div>
+      </section>
+
+      <section class="puzzle" aria-label="六乘六三消棋盘">
+        <div class="puzzle-top"><div><span class="eyebrow">MATCH & DRIVE</span><h2>匹配方块，驱动磁铁</h2></div><div class="score">得分 <strong id="score">0</strong></div><div id="voice-word" class="voice-word" aria-live="polite" hidden></div></div>
+        <div id="symbol-guide" class="symbol-guide" hidden><div class="symbol-guide-head"><strong>四种配对符号</strong><button id="close-symbol-guide" type="button" aria-label="关闭符号说明">×</button></div><div id="symbol-guide-items" class="symbol-guide-items"></div><p>符号只用于配对，每次有效交换及连消产生一个驱动任务。</p></div>
+        <div id="board" class="board" role="grid" aria-label="六乘六方块棋盘"></div>
+        <div class="puzzle-footer"><span id="board-hint">点选或拖动相邻方块交换</span><div class="puzzle-actions"><span id="queue-status" class="queue-status" aria-live="polite" hidden></span><button id="symbols" class="text-button">ⓘ 符号说明</button></div></div>
+      </section>
+    </section>
+    <footer class="footer"><p>磁通量变化 <b>→</b> 感应电动势　·　闭合回路 <b>→</b> 感应电流</p></footer>
+  </main>
+  <div id="modal" class="overlay" hidden><div class="dialog level2-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title"><span class="eyebrow" id="modal-eyebrow"></span><h2 id="modal-title"></h2><div id="modal-body"></div><div id="modal-actions" class="modal-actions"></div></div></div>
+</body>
+</html>
+

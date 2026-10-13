@@ -1,0 +1,4 @@
+#developer-levels[hidden]{display:none!important}
+.game-developer{position:fixed;z-index:10000;right:16px;top:72px;width:min(240px,90vw);padding:12px;border:2px solid #a8b7c4;border-radius:12px;background:#fffdf7;color:#233d61;box-shadow:0 8px 20px #263e5a30;font:750 14px system-ui,'Microsoft YaHei',sans-serif}
+.game-developer strong{display:block;margin-bottom:9px}.game-developer div{display:grid;grid-template-columns:1fr 1fr;gap:7px}.game-developer button{min-height:40px;border:1px solid #9db8c8;border-radius:7px;background:#edf7f6;color:#234267;font:750 14px system-ui,'Microsoft YaHei',sans-serif;cursor:pointer}.game-developer button:hover,.game-developer button:focus-visible{background:#d4efed;outline:2px solid #258f9e}
+@media(pointer:coarse) and (hover:none) and (max-width:1024px){.game-developer{display:none!important}}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>电磁救援 · 第 3 关：光电助考</title>
+  <script src="./level-access.js" data-level="3"></script>
+  <link rel="stylesheet" href="./level-access.css" />
+  <script type="module" crossorigin src="./assets/level3-BJVsAfLD.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/preferences-B44LDLeE.js">
+  <link rel="modulepreload" crossorigin href="./assets/reward-DEPHH34j.js">
+  <link rel="modulepreload" crossorigin href="./assets/formula-challenges-DDg6NSZf.js">
+  <link rel="modulepreload" crossorigin href="./assets/timed-locks-DvUjIPCF.js">
+  <link rel="stylesheet" crossorigin href="./assets/reward-CptLuSUM.css">
+  <link rel="stylesheet" crossorigin href="./assets/formula-challenges-1SvkI558.css">
+  <link rel="stylesheet" crossorigin href="./assets/level3-FBxleDpE.css">
+  <link rel="stylesheet" crossorigin href="./assets/level3-device-8ATd3AMj.css">
+</head>
+<body class="level-two level-three">
+  <main class="app">
+    <header class="header">
+      <div class="brand"><span class="eyebrow">物理互动实验 · LEVEL 03</span><h1>电磁救援</h1><p>第 3 关 · 光电助考</p></div>
+      <div class="header-actions"><div class="stat time-stat" id="time-stat"><span>剩余时间</span><strong id="time">01:00</strong></div><div class="stat violet"><span>得分／目标</span><strong id="score-top">0/4000</strong><span class="score-track" role="progressbar" aria-label="得分进度" aria-valuemin="0" aria-valuemax="4000" aria-valuenow="0" id="score-track"><i id="score-fill"></i></span></div><div class="stat multiplier-stat" id="multiplier-stat"><span>当前倍率</span><strong id="multiplier">×1</strong><small id="multiplier-time">—</small></div><div class="stat lock-stat"><span>已解锁</span><strong id="locks">0</strong></div><button id="challenge-pause" class="icon-button" aria-label="暂停挑战" title="暂停挑战">⏸<small>暂停</small></button><button id="mute" class="icon-button" aria-label="静音" title="静音">♫<small>音效</small></button><button id="fullscreen" class="icon-button" aria-label="切换全屏" title="切换全屏">⛶<small>全屏</small></button><button id="restart" class="icon-button" aria-label="重新开始" title="重新开始">↻<small>重开</small></button></div>
+    </header>
+
+    <section class="play-area">
+      <section class="experiment level2-experiment" aria-label="光电管、电路、磁场导体与 UEC 考生">
+        <div class="level2-stage-head"><span id="mode-chip" class="mode-chip">光电助考</span><span class="stage-subtitle">红／紫光 · 光电流 · 安培力</span></div>
+        <div class="photo-device" id="photo-device">
+          <div class="exam-progress" aria-label="UEC 考生得分进度"><strong id="exam-progress-label">得分进度 0/100</strong><span class="exam-progress-track"><i id="exam-progress-fill"></i></span><small>游戏积分映射 · 非真实统考成绩</small></div>
+          <div class="photo-scene" id="photo-scene">
+          <svg viewBox="0 0 680 460" role="img" aria-label="红色或紫色光子照向光阴极；紫光释放电子，收集极和外接电源形成完整回路，传统电流沿磁场中的竖直导体向下，安培力向右推动 UEC 考生。">
+            <rect class="companion-area" x="340" y="282" width="329" height="172" rx="17"/>
+            <rect class="tube-envelope" x="66" y="113" width="191" height="145" rx="28"/>
+            <text class="device-label tube-heading" x="88" y="104">光电管</text>
+            <rect class="cathode" x="111" y="137" width="15" height="98" rx="4"/><text class="device-label" x="81" y="280">光阴极 K</text>
+            <rect class="collector" x="215" y="137" width="13" height="98" rx="4"/><text class="device-label" x="194" y="280">收集极 A</text>
+            <path class="photo-wire" id="photo-wire-top" d="M119 137 V77 H368 V128"/>
+            <path class="photo-wire" d="M221 235 V312 H266"/>
+            <path class="photo-wire" id="photo-wire-bottom" d="M319 312 H330 V279 H368 V242"/>
+            <g class="collector-supply"><rect x="261" y="291" width="61" height="39" rx="7"/><text x="269" y="317">＋</text><text x="300" y="317">−</text></g>
+            <text class="supply-label" x="232" y="345">收集电源 · 完整回路</text>
+            <g id="photon-group" hidden><circle cx="20" cy="170" r="8"/><circle cx="-13" cy="150" r="6"/><circle cx="-13" cy="192" r="6"/><circle cx="-38" cy="173" r="6"/><circle cx="-57" cy="149" r="6"/><circle cx="-57" cy="194" r="6"/></g>
+            <g id="electron-group" hidden><circle cx="138" cy="165" r="5"/><circle cx="145" cy="189" r="4"/></g>
+            <rect class="photo-field" x="297" y="108" width="153" height="168" rx="16"/>
+            <text class="field-heading" x="311" y="132">B：进入屏幕</text>
+            <g class="field-marks" aria-hidden="true"><text x="312" y="181">×</text><text x="419" y="181">×</text><text x="312" y="233">×</text><text x="419" y="233">×</text></g>
+            <g id="photo-rod"><rect x="355" y="139" width="24" height="103" rx="6"/><text x="368" y="267" text-anchor="middle">竖直导体</text></g>
+            <text class="reset-label" x="70" y="318">断光后机械复位 ←</text>
+            <g id="photo-current" hidden><path d="M385 170 V221 m-8 -10 l8 10 l8 -10"/><text x="397" y="207">I ↓</text></g>
+            <g id="photo-force" hidden><path d="M385 151 H447 m-11 -9 l11 9 l-11 9"/><text x="397" y="142">F →</text></g>
+            <path id="push-link" class="push-link" d="M379 216 H476"/>
+            <g id="candidate-position" transform="translate(470 150)"><g id="uec-candidate"></g></g>
+            <g class="exam-paper" transform="translate(17 0)"><rect x="606" y="161" width="53" height="77" rx="5"/><path d="M616 183 H649 M616 197 H645 M616 211 H648"/><text x="600" y="261">考卷目标</text></g>
+            <text id="device-readout" class="device-readout" x="80" y="32">待照射 · 光电流 0</text>
+          </svg>
+          <div id="einstein-dock" class="einstein-dock" data-action="idle">
+            <button id="einstein-character" class="einstein-character" type="button" aria-label="爱因斯坦" disabled>
+              <span class="einstein-hair" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+              <span class="einstein-head" aria-hidden="true"><i class="einstein-ear left"></i><i class="einstein-ear right"></i><i class="einstein-brows"></i><i class="einstein-eyes"></i><i class="einstein-nose"></i><i class="einstein-mustache"></i><i class="einstein-mouth"></i><i class="einstein-beard"></i></span>
+              <span class="einstein-body" aria-hidden="true"><i class="einstein-shirt"></i><i class="einstein-lapel left"></i><i class="einstein-lapel right"></i></span>
+              <span class="einstein-arm left" aria-hidden="true"><i class="einstein-cuff"></i><i class="einstein-palm"></i></span>
+              <span class="einstein-arm right" aria-hidden="true"><i class="einstein-cuff"></i><i class="einstein-palm"></i></span>
+              <span class="einstein-leg left" aria-hidden="true"><i class="einstein-shoe"></i></span><span class="einstein-leg right" aria-hidden="true"><i class="einstein-shoe"></i></span>
+            </button>
+            <div class="einstein-copy"><strong id="einstein-caption">最后一段，我们一起冲刺！</strong></div>
+          </div>
+          </div>
+          <div class="device-caption" id="device-caption">三消选择光源；电流由光电管提供。</div>
+        </div>
+        <div id="combo-reaction" class="combo-reaction" aria-live="polite" hidden></div>
+        <div class="stage-message" id="stage-message" aria-live="polite">完成消除，让光子照射金属板。</div>
+        <div class="stage-actions"><button id="start-challenge" class="control-button">开始挑战</button></div>
+        <div class="scene-controls companion-controls"><button id="einstein-assist" class="einstein-button" type="button" hidden disabled>与爱因斯坦合作</button><button id="principle" class="text-button">原理说明</button></div>
+      </section>
+
+      <section class="puzzle" aria-label="六乘六三消棋盘">
+        <div class="puzzle-top"><div><span class="eyebrow">MATCH & DRIVE</span><h2>匹配方块，选择光源</h2></div><div class="score">得分 <strong id="score">0</strong></div><div id="voice-word" class="voice-word" aria-live="polite" hidden></div></div>
+        <div id="symbol-guide" class="symbol-guide" hidden><div class="symbol-guide-head"><strong>四种配对符号</strong><button id="close-symbol-guide" type="button" aria-label="关闭符号说明">×</button></div><div id="symbol-guide-items" class="symbol-guide-items"></div><p>符号只用于配对；一次有效交换及连消统一选择一种光源。</p></div>
+        <div id="board" class="board" role="grid" aria-label="六乘六方块棋盘"></div>
+        <div class="puzzle-footer"><span id="board-hint">点选或拖动相邻方块交换</span><div class="puzzle-actions"><button id="symbols" class="text-button">ⓘ 符号说明</button></div></div>
+      </section>
+    </section>
+    <footer class="footer"><p>紫光 <b>→</b> 光电子与光电流　·　磁场中的导体 <b>→</b> 向右的安培力</p></footer>
+  </main>
+  <div id="modal" class="overlay" hidden><div class="dialog level2-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title"><span class="eyebrow" id="modal-eyebrow"></span><h2 id="modal-title"></h2><div id="modal-body"></div><div id="modal-actions" class="modal-actions"></div></div></div>
+</body>
+</html>
+

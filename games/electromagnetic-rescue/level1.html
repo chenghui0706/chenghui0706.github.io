@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>电磁救援 · 第 1 关</title>
+  <script src="./level-access.js" data-level="1"></script>
+  <link rel="stylesheet" href="./level-access.css" />
+  <script type="module" crossorigin src="./assets/level1-CV_1Cb1Q.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/preferences-B44LDLeE.js">
+  <link rel="modulepreload" crossorigin href="./assets/reward-DEPHH34j.js">
+  <link rel="modulepreload" crossorigin href="./assets/drive-queue-DfiqEgVt.js">
+  <link rel="stylesheet" crossorigin href="./assets/reward-CptLuSUM.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="brand"><span class="eyebrow">物理互动实验 · LEVEL 01</span><h1>电磁救援</h1><p>第 1 关 · 启动发电机</p></div>
+      <div class="header-actions"><div class="stat"><span>剩余步数</span><strong id="moves">12</strong></div><div class="stat violet"><span>发电演示</span><strong id="drives">0/3</strong></div><button id="restart" class="icon-button" aria-label="重新开始" title="重新开始">↻<small>重新开始</small></button></div>
+    </header>
+
+    <section class="play-area">
+      <section class="experiment" aria-label="磁铁穿过线圈的发电演示">
+        <div class="scene-wrap" id="scene-wrap"><div class="scene-fallback" id="scene-fallback" hidden>此浏览器无法显示 3D 场景，请开启 WebGL。</div></div>
+        <svg id="lead-overlay" class="lead-overlay" aria-hidden="true"><path id="red-lead"/><path id="blue-lead"/></svg>
+        <div class="meter" aria-label="理想高内阻电压表，两端分别接线，开路测电压"><span id="red-terminal" class="meter-terminal red" aria-hidden="true">＋</span><span id="blue-terminal" class="meter-terminal blue" aria-hidden="true">−</span><div class="meter-head"><span>−</span><span class="meter-zero">0</span><span>+</span></div><div class="meter-face"><div class="meter-needle" id="meter-needle"></div><div class="meter-pivot"></div></div><strong>感应电动势</strong><small>理想高内阻 · 开路测电压</small><span class="meter-reading" id="meter-reading">0.00</span></div>
+        <div id="combo-reaction" class="combo-reaction" aria-live="polite" hidden></div><div class="scene-caption"><span class="caption-dot"></span><span id="tip">交换相邻方块，三个相同即可消除，驱动磁铁穿过线圈。</span></div>
+        <div class="scene-controls"><button id="pause" class="control-button" disabled>⏸ 暂停磁铁</button><span class="physics-note">电机提供机械能 · 线圈两端开路测压</span></div>
+      </section>
+
+      <section class="puzzle" aria-label="六乘六三消棋盘"><div class="puzzle-top"><div><span class="eyebrow">MATCH & DRIVE</span><h2>匹配方块，驱动磁铁</h2></div><div class="score">得分 <strong id="score">0</strong></div><div id="voice-word" class="voice-word" aria-live="polite" hidden></div></div><div id="symbol-guide" class="symbol-guide" aria-label="方块符号图例" hidden><div class="symbol-guide-head"><strong>认识四种配对符号</strong><button id="close-symbol-guide" type="button" aria-label="关闭符号说明">×</button></div><div id="symbol-guide-items" class="symbol-guide-items"></div><p>符号仅用于配对；任意三连都可触发一次驱动。</p></div><div id="board" class="board" role="grid" aria-label="六乘六方块棋盘"></div><div class="puzzle-footer"><span>点选或拖动相邻方块交换</span><div class="puzzle-actions"><span id="queue-status" class="queue-status" aria-live="polite" hidden></span><button id="symbols" class="text-button" type="button">ⓘ 符号说明</button><button id="mute" class="text-button" aria-label="静音">♫ 音效开</button></div></div><div class="voice-preview" aria-label="语音试听与新旧对比"><strong>试听语音</strong><label class="voice-version-label">版本 <select id="voice-version" aria-label="选择语音版本"><option value="after" selected>调整后</option><option value="before">调整前</option></select></label><button type="button" data-voice="tesla">Tesla!</button><button type="button" data-voice="ampere">Ampère!</button><button type="button" data-voice="faraday">Faraday!</button><span id="voice-status" role="status" aria-live="polite">加载语音中…</span></div></section>
+    </section>
+
+    <footer class="footer"><p>三连消除 <b>→</b> 电机驱动 <b>→</b> 磁通量变化 <b>→</b> 感应电动势</p></footer>
+  </main>
+  <div id="overlay" class="overlay" hidden><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title"><span class="eyebrow" id="dialog-eyebrow"></span><h2 id="dialog-title"></h2><p id="dialog-body"></p><div id="dialog-extra"></div><div class="result-actions"><a class="primary-button" id="next-level" href="./level2.html">下一关 →</a><button id="play-again">再玩一次</button><a href="./">返回首页</a></div></div></div>
+</body>
+</html>
