@@ -14,6 +14,36 @@
     .game-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:27px 0}.game-card{width:100%;padding:20px;text-align:left;border:1px solid var(--line);border-radius:7px;background:#fffdf8;color:var(--ink);cursor:pointer;min-height:105px}.game-card:hover,.game-card[aria-pressed="true"]{border-color:var(--indigo);box-shadow:0 0 0 1px var(--indigo)}.game-card strong{display:block;color:var(--indigo);font-size:1.06rem}.game-card span{font-size:.82rem;color:#53617b}.play-header{display:flex;justify-content:space-between;align-items:end;gap:18px;flex-wrap:wrap;margin-bottom:14px}.play-header h3{margin:0;color:var(--indigo)}.play-actions{display:flex;flex-wrap:wrap;gap:9px}.play-actions .button{font-size:.87rem;padding:8px 12px}.game-wrapper{position:relative;aspect-ratio:16/9;background:#222b30;border:2px solid var(--indigo);border-radius:6px;overflow:hidden}.game-wrapper iframe{display:block;width:100%;height:100%;border:0}.game-wrapper:fullscreen{width:100vw;height:100vh;aspect-ratio:auto;border:0;border-radius:0}.game-tip{font-size:.86rem;margin-top:12px}.future{margin:25px 0 0;color:#53617b;font-size:.9rem}
     footer{padding:32px 0;color:#53617b;font-size:.87rem}@media(max-width:700px){.header-inner{padding:16px 0;align-items:flex-start;flex-direction:column;gap:10px}nav{gap:8px 17px}.hero{padding:62px 0 52px}section{padding:55px 0}.two-col{grid-template-columns:1fr;gap:18px}.game-grid{grid-template-columns:1fr;gap:9px}.game-card{min-height:70px;padding:12px 16px}.game-wrapper{aspect-ratio:4/3}.game-tip{max-width:36ch}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
     .site-header .header-inner{flex-wrap:wrap}.language{display:flex;gap:3px;border:1px solid var(--indigo);border-radius:30px;padding:3px}.language button{border:0;border-radius:25px;background:transparent;padding:3px 9px;color:var(--indigo);cursor:pointer;font-size:.8rem;font-weight:700}.language button[aria-pressed="true"]{background:var(--indigo);color:#fff}.hero{background:var(--indigo);color:#fff;position:relative;overflow:hidden;padding:85px 0}.hero:after{content:"✦";position:absolute;right:6%;top:4%;font-size:clamp(140px,26vw,340px);line-height:1;color:var(--red);opacity:.85;pointer-events:none}.hero .shell{position:relative;z-index:1}.hero h1,.hero h1 span{color:#fff}.hero h1{font-size:clamp(3rem,8vw,6rem);letter-spacing:-.06em}.hero .intro{color:#fff;font-size:1.4rem;font-weight:600}.hero .eyebrow{color:#ffcf9b}.hero .button{background:var(--red);border-color:var(--red);color:#1e2334;border-radius:30px;font-weight:700}.game-card[aria-pressed="true"]{background:#e9efff}.game-card:hover{background:#e9efff}.game-wrapper{border-radius:10px}.note{background:#d9f4de}.about-section{background:#d9f4de}.writing-section{background:#fffdf8}@media(max-width:700px){.language{margin-left:auto}.hero{padding:65px 0}.hero:after{right:-40px;opacity:.25}.intro{max-width:16ch}}
+ 
+.creative-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 30px;
+}
+
+.creative-card {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #dbe0e1;
+  border-radius: 12px;
+}
+
+.creative-card h3 {
+  color: #3159db;
+}
+
+.creative-card a {
+  color: #3159db;
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .creative-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -22,7 +52,43 @@
     <div class="hero"><div class="shell"><div class="eyebrow">PHYSICS · PLAY · IDEAS</div><h1>CHENG HUI.</h1><p class="intro" data-zh="把物理课堂，变成一场探索。" data-en="Turn physics into an adventure.">把物理课堂，变成一场探索。</p><a class="button" href="#games" data-zh="开始试玩 ↗" data-en="Play games ↗">开始试玩 ↗</a></div></div>
     <section id="about" class="about-section"><div class="shell"><h2 data-zh="你好，我是郑晖。" data-en="Hi, I'm Cheng Hui.">你好，我是郑晖。</h2><p data-zh="物理教师。喜欢用游戏、创作与实验探索学习。" data-en="Physics teacher. Exploring learning through games, making and experiments.">物理教师。喜欢用游戏、创作与实验探索学习。</p></div></section>
     <section id="games"><div class="shell"><h2 data-zh="来玩一场。" data-en="Let's play.">来玩一场。</h2><div class="game-grid" role="group" aria-label="Games"><button class="game-card" type="button" data-src="./games/kluang_cross/index.html" data-zh-name="居銮群侠传" data-en-name="Kluang Cross" aria-pressed="true"><strong data-zh="居銮群侠传" data-en="Kluang Cross">居銮群侠传</strong></button><button class="game-card" type="button" data-src="/games/electromagnetic-rescue/" data-zh-name="电磁学救援" data-en-name="Electromagnetic Rescue" aria-pressed="false"><strong data-zh="电磁学救援" data-en="Electromagnetic Rescue">电磁学救援</strong></button><button class="game-card" type="button" data-src="./games/physics_rpg/index.html" data-zh-name="Physics RPG" data-en-name="Physics RPG" aria-pressed="false"><strong>Physics RPG</strong></button><button class="game-card" type="button" data-src="./games/final_masterpiece/index.html" data-zh-name="Final Masterpiece" data-en-name="Final Masterpiece" aria-pressed="false"><strong>Final Masterpiece</strong></button></div><div class="play-header"><h3 id="current-game">居銮群侠传</h3><div class="play-actions"><a id="open-game" class="button secondary" href="./games/kluang_cross/index.html" target="_blank" rel="noopener" data-zh="单独打开 ↗" data-en="Open game ↗">单独打开 ↗</a><button id="fullscreen-game" class="button" type="button" data-zh="全屏" data-en="Fullscreen">全屏</button></div></div><div class="game-wrapper" id="game-container"><iframe id="game-frame" src="./games/kluang_cross/index.html" title="居銮群侠传" allow="fullscreen" allowfullscreen loading="lazy"></iframe></div></div></section>
-    <section id="writing" class="writing-section"><div class="shell"><h2 data-zh="不止物理。" data-en="Beyond physics.">不止物理。</h2><p data-zh="电影、写作和一些新点子，陆续更新。" data-en="Films, writing and new ideas. More to come.">电影、写作和一些新点子，陆续更新。</p></div></section>
+<section id="writing" class="writing-section">
+  <div class="shell">
+    <h2 data-zh="不止物理。" data-en="Beyond physics.">不止物理。</h2>
+    <p data-zh="电影、写作、阅读和社会观察。记录课堂以外的世界。"
+       data-en="Films, writing, reading and reflections beyond the classroom.">
+       电影、写作、阅读和社会观察。记录课堂以外的世界。
+    </p>
+
+    <div class="creative-grid">
+      <article class="creative-card">
+        <h3>🎬 电影手记</h3>
+        <p>观影记录、电影评论，以及银幕之外的思考。</p>
+        <a href="https://movie.douban.com/" target="_blank" rel="noopener noreferrer">
+          探索豆瓣电影 ↗
+        </a>
+      </article>
+
+      <article class="creative-card">
+        <h3>✍️ 杂文与观察</h3>
+        <p>关于社会、生活，以及日常遇见的人与事。</p>
+        <a href="https://www.google.com/search?q=社会观察"
+           target="_blank" rel="noopener noreferrer">
+          探索相关文章 ↗
+        </a>
+      </article>
+
+      <article class="creative-card">
+        <h3>📚 阅读与学习</h3>
+        <p>分享值得阅读的文章、研究与资源。</p>
+        <a href="https://scholar.google.com/"
+           target="_blank" rel="noopener noreferrer">
+          Google Scholar ↗
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
   </main><footer><div class="shell">© 2026 CHENG HUI · GAME LAB</div></footer>
   <script>
     const cards=[...document.querySelectorAll('.game-card')],frame=document.getElementById('game-frame'),link=document.getElementById('open-game'),title=document.getElementById('current-game');
