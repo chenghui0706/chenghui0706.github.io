@@ -1,0 +1,28 @@
+title: 不止物理。
+description: 郑晖的个人博客
+url: https://chenghui0706.github.io
+baseurl: ""
+lang: zh-CN
+timezone: Asia/Kuala_Lumpur
+encoding: utf-8
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      lang: zh-CN
+
+# 游戏目录保持为普通静态文件。不要把 games 加入 exclude。
+include:
+  - .nojekyll
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .gitignore

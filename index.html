@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!doctype html>
 <html lang="zh-CN">
 <head>
@@ -38,8 +41,19 @@
   font-weight: 600;
 }
 
+.latest-posts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:30px 0 22px}
+.latest-post{padding:24px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.latest-post time,.latest-post .post-category{font-size:.78rem;color:#647186}
+.latest-post .post-category:before{content:" · ";padding:0 4px}
+.latest-post h3{font-family:Georgia,"Noto Serif SC",serif;font-size:1.3rem;line-height:1.4;margin:10px 0}
+.latest-post h3 a{text-decoration:none;color:var(--indigo)}
+.latest-post h3 a:hover{text-decoration:underline}
+.latest-post p{color:#53617b;font-size:.9rem;margin:0}
+.writing-all{display:inline-block;margin-top:8px;font-weight:700}
+.writing-language{font-size:.82rem;color:#53617b}
+
 @media (max-width: 700px) {
-  .creative-grid {
+  .creative-grid,.latest-posts {
     grid-template-columns: 1fr;
   }
 }
@@ -51,7 +65,7 @@
   <main id="top">
     <div class="hero"><div class="shell"><div class="eyebrow">PHYSICS · PLAY · IDEAS</div><h1>CHENG HUI.</h1><p class="intro" data-zh="把物理课堂，变成一场探索。" data-en="Turn physics into an adventure.">把物理课堂，变成一场探索。</p><a class="button" href="#games" data-zh="开始试玩 ↗" data-en="Play games ↗">开始试玩 ↗</a></div></div>
     <section id="about" class="about-section"><div class="shell"><h2 data-zh="你好，我是郑晖。" data-en="Hi, I'm Cheng Hui.">你好，我是郑晖。</h2><p data-zh="物理教师。喜欢用游戏、创作与实验探索学习。" data-en="Physics teacher. Exploring learning through games, making and experiments.">物理教师。喜欢用游戏、创作与实验探索学习。</p></div></section>
-    <section id="games"><div class="shell"><h2 data-zh="来玩一场。" data-en="Let's play.">来玩一场。</h2><div class="game-grid" role="group" aria-label="Games"><button class="game-card" type="button" data-src="./games/kluang_cross/index.html" data-zh-name="居銮群侠传" data-en-name="Kluang Cross" aria-pressed="true"><strong data-zh="居銮群侠传" data-en="Kluang Cross">居銮群侠传</strong></button><button class="game-card" type="button" data-src="/games/electromagnetic-rescue/" data-zh-name="电磁学救援" data-en-name="Electromagnetic Rescue" aria-pressed="false"><strong data-zh="电磁学救援" data-en="Electromagnetic Rescue">电磁学救援</strong></button><button class="game-card" type="button" data-src="./games/physics_rpg/index.html" data-zh-name="Physics RPG" data-en-name="Physics RPG" aria-pressed="false"><strong>Physics RPG</strong></button><button class="game-card" type="button" data-src="./games/final_masterpiece/index.html" data-zh-name="Final Masterpiece" data-en-name="Final Masterpiece" aria-pressed="false"><strong>Final Masterpiece</strong></button></div><div class="play-header"><h3 id="current-game">居銮群侠传</h3><div class="play-actions"><a id="open-game" class="button secondary" href="./games/kluang_cross/index.html" target="_blank" rel="noopener" data-zh="单独打开 ↗" data-en="Open game ↗">单独打开 ↗</a><button id="fullscreen-game" class="button" type="button" data-zh="全屏" data-en="Fullscreen">全屏</button></div></div><div class="game-wrapper" id="game-container"><iframe id="game-frame" src="./games/kluang_cross/index.html" title="居銮群侠传" allow="fullscreen" allowfullscreen loading="lazy"></iframe></div></div></section>
+    <section id="games"><div class="shell"><h2 data-zh="来玩一场。" data-en="Let's play.">来玩一场。</h2><div class="game-grid" role="group" aria-label="Games"><button class="game-card" type="button" data-src="./games/kluang_cross/index.html" data-zh-name="居銮群侠传" data-en-name="Kluang Cross" aria-pressed="true"><strong data-zh="居銮群侠传" data-en="Kluang Cross">居銮群侠传</strong></button><button class="game-card" type="button" data-src="/games/electromagnetic-rescue/" data-zh-name="电磁学救援" data-en-name="Electromagnetic Rescue" aria-pressed="false"><strong data-zh="电磁学救援" data-en="Electromagnetic Rescue">电磁学救援</strong></button></div><div class="play-header"><h3 id="current-game">居銮群侠传</h3><div class="play-actions"><a id="open-game" class="button secondary" href="./games/kluang_cross/index.html" target="_blank" rel="noopener" data-zh="单独打开 ↗" data-en="Open game ↗">单独打开 ↗</a><button id="fullscreen-game" class="button" type="button" data-zh="全屏" data-en="Fullscreen">全屏</button></div></div><div class="game-wrapper" id="game-container"><iframe id="game-frame" src="./games/kluang_cross/index.html" title="居銮群侠传" allow="fullscreen" allowfullscreen loading="lazy"></iframe></div></div></section>
 <section id="writing" class="writing-section">
   <div class="shell">
     <h2 data-zh="不止物理。" data-en="Beyond physics.">不止物理。</h2>
@@ -60,33 +74,17 @@
        电影、写作、阅读和社会观察。记录课堂以外的世界。
     </p>
 
-    <div class="creative-grid">
-      <article class="creative-card">
-        <h3>🎬 电影手记</h3>
-        <p>观影记录、电影评论，以及银幕之外的思考。</p>
-        <a href="https://movie.douban.com/" target="_blank" rel="noopener noreferrer">
-          探索豆瓣电影 ↗
-        </a>
+    <p class="writing-language" data-zh="文章以中文为主；英文文章会标明 English。" data-en="Posts are mainly in Chinese; English posts are marked English.">文章以中文为主；英文文章会标明 English。</p>
+    <div class="latest-posts">
+      {% for post in site.posts limit:3 %}
+      <article class="latest-post">
+        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y.%m.%d' }}</time>{% if post.category %}<span class="post-category">{{ post.category }}</span>{% endif %}
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}{% if post.lang == 'en' %} <small>English</small>{% endif %}</a></h3>
+        <p>{{ post.description | default: post.excerpt | strip_html | normalize_whitespace | truncate: 78 | escape }}</p>
       </article>
-
-      <article class="creative-card">
-        <h3>✍️ 杂文与观察</h3>
-        <p>关于社会、生活，以及日常遇见的人与事。</p>
-        <a href="https://www.google.com/search?q=社会观察"
-           target="_blank" rel="noopener noreferrer">
-          探索相关文章 ↗
-        </a>
-      </article>
-
-      <article class="creative-card">
-        <h3>📚 阅读与学习</h3>
-        <p>分享值得阅读的文章、研究与资源。</p>
-        <a href="https://scholar.google.com/"
-           target="_blank" rel="noopener noreferrer">
-          Google Scholar ↗
-        </a>
-      </article>
+      {% else %}<p data-zh="文章即将从这里开始。" data-en="The first post is coming soon.">文章即将从这里开始。</p>{% endfor %}
     </div>
+    <a class="writing-all" href="{{ '/blog/' | relative_url }}" data-zh="查看全部文章 ↗" data-en="View all posts ↗">查看全部文章 ↗</a>
   </div>
 </section>
   </main><footer><div class="shell">© 2026 CHENG HUI · GAME LAB</div></footer>
